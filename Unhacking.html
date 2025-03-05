@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hacking en cours...</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            background-image: url("background.jpg");
+            color: #00ff00;
+            font-family: "Courier New", Courier, monospace;
+            overflow: hidden;
+        }
+        .background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('background.jpg') repeat;
+            opacity: 0.3;
+            z-index: -1;
+        }
+        
+.terminal {
+    position: absolute;
+    top: 5%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 90%;
+    max-width: 700px;
+    height: 80vh; /* Hauteur ajustée */
+    overflow-y: auto; /* Permet de scroller si le texte dépasse */
+    background: black;
+    padding: 20px;
+    border: 2px solid #00ff00;
+    box-shadow: 0 0 15px #00ff00;
+}
+          @keyframes alertRed {
+    0% { background-color: black; }
+    50% { background-color: red; }
+    100% { background-color: black; }
+}
+     
+        html, body {
+    width: 100%;
+    height: 100%;
+    background-color: black; 
+    }
+        
+        .text {
+            font-size: 14px;
+            white-space: pre-line;
+            overflow: hidden;
+            font-size: 16px;
+            white-space: pre-line;
+            word-wrap: break-word
+        }
+
+        .red-light {
+            position: absolute;
+            top: 5px;
+            right: 10px;
+            width: 15px;
+            height: 15px;
+            background: red;
+            border-radius: 50%;
+            box-shadow: 0 0 10px red;
+            animation: blink 1s infinite;
+        }
+        @keyframes blink {
+            50% { opacity: 0; }
+        }
+        .big-name {
+            font-size: 40px;
+            text-align: center;
+            font-weight: bold;
+            color: red;
+            animation: glitch 1s infinite alternate;
+        }
+        @keyframes glitch {
+            0% { text-shadow: 2px 2px 5px red; }
+            100% { text-shadow: -2px -2px 5px red; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="background"></div>
+<div class="terminal">
+    <div class="red-light"></div>
+    <div class="text" id="hacking-text"></div>
+</div>
+
+<audio id="hackingSound" src="son.mp3"></audio>
+
+<script>
+    const text = `
+👀 Système compromis...
+🔍 Analyse en cours...
+🔗 Connexion au serveur sécurisé...
+
+💀 Qui suis-je ? 💀
+Je suis Dark Queen of Code 🖤💻, une hacktiviste de l'ombre.
+Ton appareil est maintenant sous mon contrôle.
+
+📂 Accès aux fichiers en cours...
+🔓 Décryptage des données...
+
+💰 Informations bancaires trouvées.
+🔑 Crypto Wallet détecté.
+
+🖥️ Exécution de la commande : FORMATAGE DU SYSTÈME
+⚠️ Suppression des fichiers...
+⚠️ Système en cours d’effacement...
+
+🚨 ALERTE : ÉCHEC IRRÉVERSIBLE 🚨
+🔥 Tentative de récupération impossible...
+
+💀 CONTRÔLE TOTAL ACQUIS 💀
+
+Fermeture du système...
+Adieu...
+
+👿 HERMINE A PRIS LE CONTRÔLE !
+
+---------------------------------------------------
+ C’ÉTAIT UNE BLAGUE !😆
+😆 Un vrai hacker ne t’aurait pas prévenu...
+ Reste sur tes gardes et évite de cliquer sur n'importe quel lien 💁🏽‍♀️
+`;
+
+    let index = 0;
+    function typeWriter() {
+        if (index < text.length) {
+            document.getElementById("hacking-text").innerHTML += text.charAt(index);
+            // Effet de lumière rouge si la ligne contient "ALERTE"
+        if (document.getElementById("hacking-text").innerHTML.includes("ALERTE")) {
+            document.body.style.animation = "alertRed 0.5s infinite";
+            document.querySelector(".terminal").style.animation = "alertRed 0.5s infinite";
+
+            window.addEventListener("click", function() {
+    let audio = document.getElementById("hackingSound");
+    audio.play().catch(error => console.log("Erreur audio : " + error));
+}, { once: true });
+
+            // Désactiver l'effet après 3 secondes
+            setTimeout(() => {
+                document.body.style.animation = "";
+                document.querySelector(".terminal").style.animation = "";
+            }, 3000);
+            }
+            index++;
+            setTimeout(typeWriter, 50); // Vitesse d'affichage
+        }
+    }
+    typeWriter();
+</script>
+
+</body>
+</html>
